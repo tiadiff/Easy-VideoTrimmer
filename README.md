@@ -1,7 +1,5 @@
 # Video Trimmer Pro
 
-> A sleek, fast, and modern Windows desktop application built with C# and .NET 8 to preview and trim MP4 videos effortlessly.
-
 ## 🚀 Features
 
 - **Built-in Video Player**: Embedded media player powered by LibVLC for smooth MP4 playback and precise seeking.
@@ -9,6 +7,8 @@
 - **Fast Video Trimming**: Rapid MP4 trimming powered by FFmpeg without quality loss.
 - **Modern Dark Theme**: Cozy, dark-themed UI with clean typography and dynamic button states.
 - **Instant Preview**: Play the original or trimmed video immediately within the app.
+
+<img width="780" height="624" alt="image" src="https://github.com/user-attachments/assets/9e6accd5-0aca-46f9-adc1-48e6e72507ad" />
 
 ## 🛠️ Requirements
 
