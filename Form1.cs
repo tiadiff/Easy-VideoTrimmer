@@ -100,10 +100,15 @@ public partial class Form1 : Form
         this.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
         this.FormClosed += Form1_FormClosed;
 
-        // Left Panel
+        // 1. Right Panel (Fill) - MUST be added first so Left Panel can dock properly beside it
+        rightPanel = new Panel() { Dock = DockStyle.Fill, BackColor = Color.Black };
+        this.Controls.Add(rightPanel);
+
+        // 2. Left Panel (Left) - Added second so it docks to the left edge of the Form
         leftPanel = new Panel() { Dock = DockStyle.Left, Width = 380, BackColor = bgPanel, Padding = new Padding(20) };
         this.Controls.Add(leftPanel);
 
+        // Left Panel Controls
         lblTitle = new Label() { Text = "✨ Video Trimmer", Font = new Font("Segoe UI", 18F, FontStyle.Bold), ForeColor = accentPrimary, AutoSize = true, Location = new Point(20, 20) };
         leftPanel.Controls.Add(lblTitle);
 
@@ -170,17 +175,16 @@ public partial class Form1 : Form
         btnPlayTrimmed.Click += BtnPlayTrimmed_Click;
         leftPanel.Controls.Add(btnPlayTrimmed);
 
-        // Right Panel (Player)
-        rightPanel = new Panel() { Dock = DockStyle.Fill, BackColor = Color.Black };
-        this.Controls.Add(rightPanel);
-
-        bottomPlayerPanel = new Panel() { Dock = DockStyle.Bottom, Height = 90, BackColor = bgDark };
-        rightPanel.Controls.Add(bottomPlayerPanel);
-
+        // Right Panel Structure
+        // 1. videoView (Fill) - MUST be added first to rightPanel
         videoView = new VideoView() { Dock = DockStyle.Fill, BackColor = Color.Black };
         rightPanel.Controls.Add(videoView);
 
-        // Player Controls
+        // 2. bottomPlayerPanel (Bottom) - Added second so it docks to the bottom edge of rightPanel
+        bottomPlayerPanel = new Panel() { Dock = DockStyle.Bottom, Height = 90, BackColor = bgDark };
+        rightPanel.Controls.Add(bottomPlayerPanel);
+
+        // Controls inside bottomPlayerPanel
         tbSeek = new TrackBar() { Location = new Point(15, 5), Width = 670, Maximum = 10000, TickStyle = TickStyle.None, Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right };
         tbSeek.MouseDown += (s, e) => _isDragging = true;
         tbSeek.MouseUp += (s, e) => {
@@ -201,7 +205,7 @@ public partial class Form1 : Form
         btnStop.Click += (s, e) => _mediaPlayer.Stop();
         bottomPlayerPanel.Controls.Add(btnStop);
 
-        lblTime = new Label() { Text = "00:00:00 / 00:00:00", Location = new Point(250, 47), Size = new Size(180, 20), Font = new Font("Segoe UI", 11F, FontStyle.Bold) };
+        lblTime = new Label() { Text = "00:00:00 / 00:00:00", Location = new Point(250, 47), Size = new Size(220, 20), Font = new Font("Segoe UI", 11F, FontStyle.Bold) };
         bottomPlayerPanel.Controls.Add(lblTime);
     }
 
