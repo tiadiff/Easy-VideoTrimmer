@@ -1,0 +1,15 @@
+# Build & Binary directories
+[Bb]in/
+[Oo]bj/
+*.user
+*.userosscache
+*.sln.docstates
+
+# VS Code / IDE
+.vscode/
+.idea/
+
+# FFmpeg downloaded binaries (if any local cache)
+ffmpeg/
+ffmpeg.exe
+ffprobe.exe
